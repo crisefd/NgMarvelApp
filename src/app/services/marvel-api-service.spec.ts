@@ -8,7 +8,7 @@ import {
   XHRBackend
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { BASE_URL, PUBLIC_KEY, API_VERSION } from '../app/providers';
+import { BASE_URL, PUBLIC_KEY, API_VERSION } from '../../app/providers';
 
 describe('Testing MarvelAPIService', () => {
   beforeEach(() => {
@@ -24,8 +24,8 @@ describe('Testing MarvelAPIService', () => {
     });
   });
   
-  describe('get character with non empty id', () => {
-      it('should return an Observable<any> value ', () => {
+  describe('get character with empty id', () => {
+      it('should return error code 404 ', () => {
           inject([MarvelAPIService, XHRBackend], (MarvelAPIService, mockBackend) => {
             const mockResponse = {
                 data : [

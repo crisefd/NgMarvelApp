@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { MarvelAPIService } from '../services/marvel-api.service';
+import { MarvelAPIService } from '../app/services/marvel-api.service';
 import { BASE_URL, PUBLIC_KEY, API_VERSION } from './providers';
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
-import { API_VERSION, PUBLIC_KEY, BASE_URL } from '../app/providers';
+import { API_VERSION, PUBLIC_KEY, BASE_URL } from '../../app/providers';
 
 @Injectable()
 export class MarvelAPIService {
