@@ -8,7 +8,7 @@ import {
   XHRBackend
 } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { BASE_URL, PUBLIC_KEY, API_VERSION } from '../../app/providers';
+import { BASE_URL, PUBLIC_KEY, API_VERSION } from '../app/providers';
 
 describe('Testing MarvelAPIService', () => {
   beforeEach(() => {

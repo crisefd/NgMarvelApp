@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MarvelAPIService } from './services/marvel-api.service';
+import { MarvelAPIService } from '../services/marvel-api.service';
 
 @Component({
   selector: 'app-root',

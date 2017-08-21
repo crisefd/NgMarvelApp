@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
-import { API_VERSION, PUBLIC_KEY, BASE_URL } from '../../app/providers';
+import { API_VERSION, PUBLIC_KEY, BASE_URL } from '../app/providers';
 
 @Injectable()
 export class MarvelAPIService {
@@ -12,27 +12,36 @@ export class MarvelAPIService {
               @Inject(PUBLIC_KEY) private publicKey) { }
 
   getCharacterById(characterId: string): Observable<any> {
-    let result: any;
+    let results: any;
     let completeUrl: string = this.baseUrl + `/${this.apiVersion}/public`;
     if (characterId === '') { 
         characterId = '-1';
     }
     completeUrl += `/characters/${characterId}/`;
-    this.addParamsToUrl(completeUrl);
-    result = this.getCall(completeUrl);
-    return result;
+    completeUrl = this.addParamsToUrl(completeUrl);
+    results = this.getCall(completeUrl);
+    return results;
   }
   
   getComicsByCharacterId(characterId: string): Observable<any> {
-      let result: any;
+      let results: any;
       let completeUrl: string = this.baseUrl + `/${this.apiVersion}/public`;
       if (characterId === '') { 
           characterId = '-1';
       }
       completeUrl += `/characters/${characterId}/comics`;
-      this.addParamsToUrl(completeUrl);
-      result = this.getCall(completeUrl);
-      return result;
+      completeUrl = this.addParamsToUrl(completeUrl);
+      results = this.getCall(completeUrl);
+      return results;
+  }
+  
+  searchCharacter(searchText: string, limit: number = 10): Observable<any>{
+      let results: any;
+      let completeUrl: string = this.baseUrl + `/${this.apiVersion}/public/characters`;
+      let params = {limit: limit, orderBy: 'name', nameStartsWith: searchText};
+      completeUrl = this.addParamsToUrl(completeUrl, params);
+      results = this.getCall(completeUrl);
+      return results;
   }
 
   private addParamsToUrl(url: string, params: object = {}) {

@@ -1,0 +1,40 @@
+<app-toolbar *ngIf="!preview"></app-toolbar>
+<md-card *ngIf="!preview">
+    
+    
+</md-card>
+
+
+<md-input dividerColor="accent" (blur)="setFocusState(false)" (focus)="setFocusState(true)" placeholder="Search for characters" value="" [(ngModel)]="searchText" (ngModelChange)="doSearch($event)">
+</md-input>
+
+<div id="all-results" (mouseleave)="setActiveState(false)" (mouseover)="setActiveState(true)">
+    <div [hidden]="!((results.length> 0 || resultsMovies.length > 0) && (active || focus))" class="pull-right" >
+        <div *ngFor="let result of results; let i = index;">
+            <a (click)="goCharacter(result.id)">
+                <!-- <div class="results" [ngStyle]="{'background-color': colorsPersons[i]}" (mouseleave)="removeColorPersons(i)" (mouseover)="putColorPersons(i)">
+                    <img *ngIf="result.profile_path" src="{{getUrl(result.profile_path)}}" class="autocomplete">
+                    <img *ngIf="!result.profile_path" src="assets/images/photonotavailable.jpg"  class="autocomplete">
+                    {{ result.name }}
+                </div> -->
+            </a>
+        </div>
+        <!-- <div *ngFor="let result of resultsMovies; let i = index;">
+            <a (click)="goMovie(result.id)" >
+                <div class="results" [ngStyle]="{'background-color': colorsMovies[i]}" (mouseleave)="removeColorMovies(i)" (mouseover)="putColorMovies(i)">
+                    <img *ngIf="result.poster_path" src="{{getUrl(result.poster_path)}}"  class="autocomplete">
+                    <img *ngIf="!result.poster_path" src="assets/images/posternotavailable.jpg"  class="autocomplete">
+                    {{ result.title }}
+                </div>
+            </a>
+        </div> -->
+        <div>
+            <a (click)="goExpanded()" >
+                <div class="results" [ngStyle]="{'background-color': color}" (mouseleave)="removeColor()" (mouseover)="putColor()">
+                    
+                    <h3><md-icon color="accent">search</md-icon>See all results for {{ search }}</h3>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
