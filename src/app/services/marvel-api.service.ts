@@ -6,10 +6,6 @@ import { API_VERSION, PUBLIC_KEY, BASE_URL } from '../../app/providers';
 @Injectable()
 export class MarvelAPIService {
 
-  //private baseUrl: string = 'https://gateway.marvel.com';
-  //private apiVersion: string = 'v1';
-  //private publicKey: string = '805efad39ef74122cee0c2ad31e6f95b';
-
   constructor(private http: Http, 
               @Inject(BASE_URL) private baseUrl,
               @Inject(API_VERSION) private apiVersion,
@@ -25,6 +21,18 @@ export class MarvelAPIService {
     this.addParamsToUrl(completeUrl);
     result = this.getCall(completeUrl);
     return result;
+  }
+  
+  getComicsByCharacterId(characterId: string): Observable<any> {
+      let result: any;
+      let completeUrl: string = this.baseUrl + `/${this.apiVersion}/public`;
+      if (characterId === '') { 
+          characterId = '-1';
+      }
+      completeUrl += `/characters/${characterId}/comics`;
+      this.addParamsToUrl(completeUrl);
+      result = this.getCall(completeUrl);
+      return result;
   }
 
   private addParamsToUrl(url: string, params: object = {}) {

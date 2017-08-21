@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { MarvelAPIService } from '../app/services/marvel-api.service';
 import { BASE_URL, PUBLIC_KEY, API_VERSION } from './providers';
@@ -9,6 +10,7 @@ import { BASE_URL, PUBLIC_KEY, API_VERSION } from './providers';
     AppComponent
   ],
   imports: [
+    HttpModule,
     BrowserModule
   ],
   providers: [
