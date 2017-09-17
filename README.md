@@ -1,3 +1,4 @@
+<!-- <<<<<<< HEAD
 # NgMarvelApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.0.
@@ -26,3 +27,39 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+## ng-marvel-app-2
+> This project is generated with [generator-angular-project](https://github.com/shibbir/generator-angular-project) version 0.2.4.
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
+
+## Installation
+
+```bash
+$ yarn start
+```
+
+## TypeScript Linting
+```bash
+$ yarn tslint
+```
+
+## Production Build
+```bash
+$ yarn build
+```
+
+## Running Unit Tests
+```bash
+$ yarn test
+```
+
+## Running End-to-End Tests
+```bash
+# make sure you have a running app
+$ yarn e2e
+```
+
+## License
+<a href="https://opensource.org/licenses/MIT">MIT License</a>
+>>>>>>> Changing architecture to generator-angular-project -->

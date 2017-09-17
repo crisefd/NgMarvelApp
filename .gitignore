@@ -7,6 +7,9 @@
 
 # dependencies
 /node_modules
+.bower-*/
+bower_components
+coverage
 
 # IDEs and editors
 /.idea
@@ -40,4 +43,6 @@ yarn-error.log
 
 # System Files
 .DS_Store
+ehthumbs.db
+Icon?
 Thumbs.db
