@@ -5,7 +5,8 @@
 </md-card>
 
 
-<md-input dividerColor="accent" (blur)="setFocusState(false)" (focus)="setFocusState(true)" placeholder="Search for characters" value="" [(ngModel)]="searchText" (ngModelChange)="doSearch($event)">
+<md-input dividerColor="accent" (blur)="setFocusState(false)" (focus)="setFocusState(true)" placeholder="Search for characters" value="" 
+      [(ngModel)]="searchText" (ngModelChange)="doSearch($event)">
 </md-input>
 
 <div id="all-results" (mouseleave)="setActiveState(false)" (mouseover)="setActiveState(true)">

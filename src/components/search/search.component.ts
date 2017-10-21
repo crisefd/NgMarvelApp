@@ -7,13 +7,13 @@ import {
   Component
 } from '@angular/core';
 
-import { MarvelAPIService } from '../services/marvel-api.service';
+import { MarvelAPIService } from '../../services/marvel-api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.scss']
 })
 export class SearchComponent {
 
@@ -34,6 +34,14 @@ export class SearchComponent {
   
   setActiveState(active: boolean) {
       this.active = active;
+  }
+
+  putColor() {
+
+  }
+
+  removeColor() {
+
   }
   
   setFocusState(focus: boolean) {

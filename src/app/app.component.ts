@@ -5,10 +5,9 @@ import { MarvelAPIService } from '../services/marvel-api.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [MarvelAPIService]
+  providers: [ MarvelAPIService ]
 })
 export class AppComponent {
   title = 'app';
-  constructor(private marvelApiService: MarvelAPIService){
-  }
+  constructor(private marvelApiService: MarvelAPIService){ }
 }
