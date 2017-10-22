@@ -36,12 +36,13 @@ export class MarvelAPIService {
   }
   
   searchCharacter(searchText: string, limit: number = 10): Observable<any>{
-      let results: any;
-      let completeUrl: string = this.baseUrl + `/${this.apiVersion}/public/characters`;
-      let params = {limit: limit, orderBy: 'name', nameStartsWith: searchText};
+      let response: any;
+      let completeUrl: string = this.baseUrl + `:443/${this.apiVersion}/public/characters`;
+      let params = { nameStartsWith: searchText, orderBy: 'name', limit: limit };
       completeUrl = this.addParamsToUrl(completeUrl, params);
-      results = this.getCall(completeUrl);
-      return results;
+      console.log("completeUrl ", completeUrl);
+      response = this.getCall(completeUrl);
+      return response;
   }
 
   private addParamsToUrl(url: string, params: object = {}) {
@@ -50,7 +51,7 @@ export class MarvelAPIService {
         let value: string = params[key];
         url += `${key}=${value}&`;
     });
-    url += `apiKey=${this.publicKey}`;
+    url += `apikey=${this.publicKey}`;
     return url;
   }
 

@@ -17,15 +17,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class SearchComponent {
 
-  private results: Array<any>;
-  private searchText: string;
-  private active: boolean;
-  private focus: boolean;
+  public results: Array<any>;
+  public searchText: string;
+  public active: boolean;
+  public focus: boolean;
   @Input() preview: boolean;
 
   constructor(private marvelApiService: MarvelAPIService,
     private route: ActivatedRoute,
     private router: Router) {
+    this.clear();
     this.router.events.subscribe(path => {
       this.clear();
       this.focus = false;
@@ -58,11 +59,15 @@ export class SearchComponent {
       //this.router.navigate(['/person/'+id]); 
   }
 
+  goExpanded(){
+
+  }
+
   doSearch() {
     if (this.searchText.length > 2) {
       this.marvelApiService.searchCharacter(this.searchText)
-        .subscribe(results => {
-            this.results = results;
+        .subscribe(response => {
+            this.results = (response.code == 200)? response.data.results: [];
           // TODO: handle character results
         });
     } else {
