@@ -16,9 +16,9 @@
     <div [hidden]="!(results.length> 0  && (active || focus))" class="pull-right" >
         <div *ngFor="let result of results; let i = index;">
             <a (click)="goCharacter(result.id)">
-                <div class="results" [ngStyle]="{'background-color': mycolor}">
-                    <img *ngIf="result.thumbnail.path" src="{{result.thumbnail.path}}" class="autocomplete">
-                    <img *ngIf="!result.thumbnail.path" src="../../assets/images/imagenotavailable" class="autocomplete">
+                <div class="results">
+                    <!-- <img *ngIf="result.thumbnail.path" src="{{result.thumbnail.path}}" class="autocomplete"> -->
+                    <img *ngIf="result.thumbnail.path" src="../../assets/images/imagenotavailable.jpg" class="autocomplete">
                     {{result.name}}
                 </div>
                 <!-- <div class="results" [ngStyle]="{'background-color': colorsPersons[i]}" (mouseleave)="removeColorPersons(i)" (mouseover)="putColorPersons(i)">
@@ -41,7 +41,7 @@
             <a (click)="goExpanded()" >
                 <div class="results" [ngStyle]="{'background-color': color}" (mouseleave)="removeColor()" (mouseover)="putColor()">
                     
-                    <h4><md-icon color="accent">search </md-icon>See all results for {{ searchText }}</h4>
+                    <h4><md-icon color="accent">  More results for "{{ searchText }}" </md-icon>  </h4>
                 </div>
             </a>
         </div>
