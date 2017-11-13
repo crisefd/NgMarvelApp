@@ -11,6 +11,7 @@ import { ToolbarComponent } from '../components/toolbar/toolbar.component';
 import { SearchComponent } from '../components/search/search.component';
 import { HomeComponent } from '../components/home/home.component';
 import { FooterComponent } from '../components/footer/footer.component';
+import { CharacterComponent } from '../components/character/character.component';
 import { MarvelAPIService } from '../services/marvel-api.service';
 import { BASE_URL, PUBLIC_KEY, API_VERSION } from './providers';
 
@@ -21,7 +22,8 @@ import { BASE_URL, PUBLIC_KEY, API_VERSION } from './providers';
     FooterComponent,
     HomeComponent,
     FooterComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    CharacterComponent
   ],
   imports: [
     MaterialModule,

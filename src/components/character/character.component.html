@@ -1,0 +1,36 @@
+<app-toolbar></app-toolbar>
+
+    <div class="main-panel" class="col-md-12" >
+        <div class="profile-background" [ngStyle]="{'background-image': 'url(' + getPicture() + ')'}"></div>
+        <div class="gradient">
+
+               <!-- ================ INFO PANEL ================ -->
+               <div class="character-info-container">
+                   <div class="center-align">
+                    <!--============================ PANEL LEFT========================= -->
+                    <div class="character-info-panel-left" [ngStyle]="{'background-image': 'url(' + getPicture() + ')'}">
+                        <div class="character-profile-image" >
+                                    <div class="decorative-shadow"></div>	
+                        </div>
+                        <div class="character-detail-panel">
+
+
+
+                        </div>
+                    </div>
+                    <!-- =========================PANEL RIGTH============== -->
+                    <div class="character-info-panel-right">
+                        <div class="character-name-container">
+                            <p class="character-name">{{getName() | uppercase}}</p>
+                        </div>
+
+                    </div>
+                   </div>
+
+               </div>
+
+        </div>
+    </div>
+
+
+<app-footer></app-footer>

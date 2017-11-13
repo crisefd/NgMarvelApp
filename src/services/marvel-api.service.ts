@@ -12,15 +12,15 @@ export class MarvelAPIService {
               @Inject(PUBLIC_KEY) private publicKey) { }
 
   getCharacterById(characterId: string): Observable<any> {
-    let results: any;
+    let response: any;
     let completeUrl: string = this.baseUrl + `/${this.apiVersion}/public`;
     if (characterId === '') { 
         characterId = '-1';
     }
-    completeUrl += `/characters/${characterId}/`;
+    completeUrl += `/characters/${characterId}`;
     completeUrl = this.addParamsToUrl(completeUrl);
-    results = this.getCall(completeUrl);
-    return results;
+    response = this.getCall(completeUrl);
+    return response;
   }
   
   getComicsByCharacterId(characterId: string): Observable<any> {
@@ -40,7 +40,6 @@ export class MarvelAPIService {
       let completeUrl: string = this.baseUrl + `:443/${this.apiVersion}/public/characters`;
       let params = { nameStartsWith: searchText, orderBy: 'name', limit: limit };
       completeUrl = this.addParamsToUrl(completeUrl, params);
-      console.log("completeUrl ", completeUrl);
       response = this.getCall(completeUrl);
       return response;
   }

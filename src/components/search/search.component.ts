@@ -56,7 +56,7 @@ export class SearchComponent {
   }
   
   goCharacter(characterId: number) {
-      //this.router.navigate(['/person/'+id]); 
+      this.router.navigate(['/characterm/' + characterId]); 
   }
 
   goExpanded(){
@@ -65,11 +65,21 @@ export class SearchComponent {
 
   doSearch() {
     if (this.searchText.length > 2) {
-      this.marvelApiService.searchCharacter(this.searchText)
-        .subscribe(response => {
-            this.results = (response.code == 200)? response.data.results: [];
-          // TODO: handle character results
-        });
+        this.marvelApiService.searchCharacter(this.searchText)
+          .subscribe(
+            {
+              next: response => {
+                this.results = (response.code == 200)? response.data.results: [];
+        
+              },
+              error: err => {
+                
+              },
+              complete: () => {
+                
+              }
+          }
+        );
     } else {
         this.results = [];
     }
