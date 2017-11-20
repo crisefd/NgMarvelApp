@@ -9,6 +9,9 @@ import {
 
 import { MarvelAPIService } from '../../services/marvel-api.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/pluck';
 
 @Component({
   selector: 'app-search',
@@ -17,7 +20,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class SearchComponent {
 
-  public results: Array<any>;
+  public results: any;
   public searchText: string;
   public active: boolean;
   public focus: boolean;
@@ -56,7 +59,7 @@ export class SearchComponent {
   }
   
   goCharacter(characterId: number) {
-      this.router.navigate(['/characterm/' + characterId]); 
+      this.router.navigate(['/character/' + characterId]); 
   }
 
   goExpanded(){
@@ -64,24 +67,21 @@ export class SearchComponent {
   }
 
   doSearch() {
-    if (this.searchText.length > 2) {
-        this.marvelApiService.searchCharacter(this.searchText)
-          .subscribe(
+        let searchField = document.querySelector('input');
+        Observable.fromEvent(searchField, 'input')
+          .pluck('target', 'value')
+          .filter( (searchText: string) => { return searchText.length > 2} )
+          .debounceTime(500)
+          .distinctUntilChanged()
+          .switchMap( (searchText: string) => {
+             return this.marvelApiService.searchCharacter(searchText)
+                      .pluck('data', 'results');
+          }).subscribe(
             {
-              next: response => {
-                this.results = (response.code == 200)? response.data.results: [];
-        
-              },
-              error: err => {
-                
-              },
-              complete: () => {
-                
-              }
-          }
-        );
-    } else {
-        this.results = [];
-    }
+              next: results => { this.results = results },
+              error: err => { this.results = [] },
+              complete: () => {}
+            }
+          );
   }
 }

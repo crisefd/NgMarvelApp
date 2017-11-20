@@ -8,7 +8,7 @@
 <md-input-container>
     <input mdInput
       (blur)="setFocusState(false)" (focus)="setFocusState(true)" placeholder="Search for characters" value="" 
-      [(ngModel)]="searchText" (ngModelChange)="doSearch($event)" ngDefaultControl>
+      (input)="doSearch()" ngDefaultControl>
 
 </md-input-container>
 
@@ -39,7 +39,7 @@
         </div> -->
         <div>
             <a (click)="goExpanded()" >
-                <div class="results" [ngStyle]="{'background-color': color}" (mouseleave)="removeColor()" (mouseover)="putColor()">
+                <div class="results" (mouseleave)="removeColor()" (mouseover)="putColor()">
                     
                     <h4><md-icon color="accent">  More results for "{{ searchText }}" </md-icon>  </h4>
                 </div>
