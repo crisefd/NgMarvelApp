@@ -74,9 +74,13 @@ export class SearchComponent {
     this.dummyAuxFunction(4);
   }
 
-  doSearch() {
+  getEventObservable(){
     let searchField = document.querySelector('input');
-    Observable.fromEvent(searchField, 'input')
+    return Observable.fromEvent(searchField, 'input');
+  }
+
+  doSearch() {
+    this.getEventObservable()
       .pluck('target', 'value')
       .filter( (searchText: string) => { return searchText.length > 2} )
       .debounceTime(500)
