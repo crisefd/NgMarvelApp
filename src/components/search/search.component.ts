@@ -29,10 +29,10 @@ export class SearchComponent {
   constructor(private marvelApiService: MarvelAPIService,
     private router: Router) {
     this.clear();
-    // this.router.events.subscribe(path => {
-    //   this.clear();
-    //   this.focus = false;
-    // });
+    this.router.events.subscribe(path => {
+      this.clear();
+      this.focus = false;
+    });
   }
   
   setActiveState(active: boolean) {

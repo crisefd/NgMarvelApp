@@ -22,6 +22,12 @@ class TestComponent {
     constructor(){}
 }
 
+class MyRouter{
+    events = {
+        subscribe: (f) => {}
+    };
+}
+
 fdescribe('SearchComponent test', () => {
     fit('should create an instance', () => {
         TestBed.configureTestingModule({
@@ -33,7 +39,7 @@ fdescribe('SearchComponent test', () => {
 
             providers:[
                 {provide: MarvelAPIService, useValue: {}}, 
-                {provide: Router, useValue: {} } 
+                {provide: Router, useClass: MyRouter } 
                ],
 
              declarations: [TestComponent, 
