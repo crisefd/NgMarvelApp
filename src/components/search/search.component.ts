@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 import { MarvelAPIService } from '../../services/marvel-api.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router  } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/pluck';
@@ -27,13 +27,12 @@ export class SearchComponent {
   @Input() preview: boolean;
 
   constructor(private marvelApiService: MarvelAPIService,
-    private route: ActivatedRoute,
     private router: Router) {
     this.clear();
-    this.router.events.subscribe(path => {
-      this.clear();
-      this.focus = false;
-    });
+    // this.router.events.subscribe(path => {
+    //   this.clear();
+    //   this.focus = false;
+    // });
   }
   
   setActiveState(active: boolean) {
@@ -67,21 +66,21 @@ export class SearchComponent {
   }
 
   doSearch() {
-        let searchField = document.querySelector('input');
-        Observable.fromEvent(searchField, 'input')
-          .pluck('target', 'value')
-          .filter( (searchText: string) => { return searchText.length > 2} )
-          .debounceTime(500)
-          .distinctUntilChanged()
-          .switchMap( (searchText: string) => {
-             return this.marvelApiService.searchCharacter(searchText)
-                      .pluck('data', 'results');
-          }).subscribe(
-            {
-              next: results => { this.results = results },
-              error: err => { this.results = [] },
-              complete: () => {}
-            }
-          );
+    let searchField = document.querySelector('input');
+    Observable.fromEvent(searchField, 'input')
+      .pluck('target', 'value')
+      .filter( (searchText: string) => { return searchText.length > 2} )
+      .debounceTime(500)
+      .distinctUntilChanged()
+      .switchMap( (searchText: string) => {
+         return this.marvelApiService.searchCharacter(searchText)
+                  .pluck('data', 'results');
+      }).subscribe(
+        {
+          next: results => { this.results = results },
+          error: err => { this.results = [] },
+          complete: () => {}
+        }
+      );
   }
 }
