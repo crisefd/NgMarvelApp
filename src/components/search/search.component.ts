@@ -65,6 +65,15 @@ export class SearchComponent {
 
   }
 
+  dummyAuxFunction(param: number){
+    return param * param;
+  }
+
+  dummyFunction() {
+    this.active = true;
+    this.dummyAuxFunction(4);
+  }
+
   doSearch() {
     let searchField = document.querySelector('input');
     Observable.fromEvent(searchField, 'input')

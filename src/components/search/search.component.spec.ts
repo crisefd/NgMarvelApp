@@ -53,4 +53,37 @@ fdescribe('SearchComponent test', () => {
 
         expect( component ).toBeTruthy();
     });
+
+    fit('spy example test', () => {
+        TestBed.configureTestingModule({
+            imports: [ HttpModule,
+                BrowserModule,   
+                FormsModule,
+                BrowserAnimationsModule,
+                MaterialModule],
+
+            providers:[
+                {provide: MarvelAPIService, useValue: 
+                                    {searchCharacter: () => {
+                                        return Observable.of({});
+
+                                        }
+                                    }}, 
+                {provide: Router, useClass: MyRouter } 
+               ],
+
+             declarations: [TestComponent, 
+                            SearchComponent, 
+                            ToolbarComponent,
+                            FooterComponent,
+                          
+                           ] });
+        let fixture = TestBed.createComponent(TestComponent);
+        let component = fixture.debugElement.children[0].componentInstance;
+        let spy = spyOn( component, 'dummyAuxFunction' );
+        component.dummyFunction();
+        expect(component.dummyAuxFunction).toHaveBeenCalledWith(4);
+        expect(component.dummyAuxFunction).toHaveBeenCalledTimes(1);
+        
+    });
 });
